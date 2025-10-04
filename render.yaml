@@ -1,0 +1,13 @@
+# render.yaml
+services:
+  - type: web
+    name: news-aggregator-mvp
+    env: python
+    region: frankfurt        # или oregon — ближе к вашей аудитории
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+    healthCheckPath: /docs   # FastAPI Swagger — хороший health check
