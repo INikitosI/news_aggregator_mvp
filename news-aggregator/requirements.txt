@@ -1,6 +1,0 @@
-fastapi
-uvicorn[standard]
-feedparser
-requests
-beautifulsoup4
-python-dotenv
