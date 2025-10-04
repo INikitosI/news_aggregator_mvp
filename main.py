@@ -5,11 +5,13 @@ from parsers.rss_parser import SOURCES, fetch_news_from_rss
 from utils.summarizer import nlp_summarize
 from typing import List, Dict
 
+
+
 app = FastAPI(
     title="Персональный агрегатор новостей (MVP)",
     description="Собирает новости из RSS и генерирует краткую сводку (2–3 предложения)."
 )
-
+const port = process.env.PORT || 4000 
 # Раздача статики (фронтенд)
 if os.path.exists("static"):
     app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -42,4 +44,5 @@ def get_news():
             "url": item["url"],
             "source": item["source"]
         })
+
     return result
